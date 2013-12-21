@@ -1,7 +1,7 @@
 
 
-#include "YouBotBase.hpp"
-#include "YouBotManipulator.hpp"
+#include <youbot/YouBotBase.hpp>
+#include <youbot/YouBotManipulator.hpp>
 #include <boost/array.hpp>
 #include <boost/multi_array.hpp>
 #include <boost/python/numeric.hpp>
@@ -42,18 +42,10 @@ public:
 	object stdVecToNumpyArray( std::vector<double> const& vec )
 	{
       		npy_intp size = vec.size();
-		// const_cast is rather horrible but we need a writable pointer
-      		double * data = size ? const_cast<double *>(&vec[0]) : static_cast<double *>(NULL);
-    		// create a PyObject * from pointer and data 
+		double * data = size ? const_cast<double *>(&vec[0]) : static_cast<double *>(NULL);
       		PyObject * pyObj = PyArray_SimpleNewFromData( 1, &size, NPY_DOUBLE, data );
       		boost::python::handle<> handle( pyObj );
       		boost::python::numeric::array arr( handle );
-
-   		 /* The problem of returning arr is twofold: firstly the user can modify
-      		the data which will betray the const-correctness 
-      		Secondly the lifetime of the data is managed by the C++ API and not the lifetime
-      		of the numpy array whatsoever. But we have a simply solution..
-     		*/
 		return arr.copy(); // copy the object. numpy owns the copy now.
   	};
 	bool SetBaseVelocity(const object& o);

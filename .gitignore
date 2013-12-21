@@ -3,6 +3,8 @@
 *.lo
 *.o
 *~
+lib.linux-x86_64-2.7/
+temp.linux-x86_64-2.7/
 # Compiled Dynamic libraries
 *.so
 *.dylib
