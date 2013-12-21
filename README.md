@@ -17,7 +17,7 @@ Installation Instruction :
 
                 git clone 
                 cd youbot-py
-                python setup.py build
+                python setup.py build --build-base=.
                 python setup.py install
                 
 -------------------------------------------------------------------------------------
