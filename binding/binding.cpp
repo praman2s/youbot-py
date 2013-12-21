@@ -81,7 +81,7 @@ object Robot::GetArmJointValues(){
 		JointAngles[i] = (double)angle.angle.value();
 	}
 	numeric::array::set_module_and_type("numpy", "ndarray"); 
-	return stdVecToNumpyArray(JointAngles);
+	return PyArray(JointAngles);
 
 }
 bool Robot::SetBaseVelocity(const object& o){
