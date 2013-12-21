@@ -22,7 +22,7 @@ Installation Instruction :
                 
 -------------------------------------------------------------------------------------
 
-Usage :
+Usage(Currently works only with hardware connected) :
 
 1. All the functions of the youbot_driver are exposed when youbotpy is imported.
 2. Normal usage "from youbotpy import * "
