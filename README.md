@@ -12,4 +12,5 @@ Installation Instruction :
 3. Set the environment variables.
 
                 export LD_LIBRARY_PATH=/path_to_youbot_driver/lib/
+                export YOUBOT_HOME=/path_to_youbot_driver
 
