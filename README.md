@@ -15,7 +15,7 @@ Installation Instruction :
                 export YOUBOT_HOME=/path_to_youbot_driver
 4. Build and Install.
 
-                git clone 
+                git clone https://github.com/praman2s/youbot-py.git
                 cd youbot-py
                 python setup.py build --build-base=.
                 python setup.py install
