@@ -13,4 +13,29 @@ Installation Instruction :
 
                 export LD_LIBRARY_PATH=/path_to_youbot_driver/lib/
                 export YOUBOT_HOME=/path_to_youbot_driver
+4. Build and Install.
+
+                git clone 
+                cd youbot-py
+                python setup.py build
+                python setup.py install
+                
+-------------------------------------------------------------------------------------
+
+Usage :
+
+1. All the functions of the youbot_driver are exposed when youbotpy is imported.
+2. Normal usage "from youbotpy import * "
+3. Try the examples/helloworld.py to test the functionalities.
+
+---------------------------------------------------------------------------------------
+
+
+Check the milestones for future improvements.
+
+Contact hotline@youbot-store.org for more improvements.
+Help us by reporting issues.
+
+----------------------------------------------------------------------------------------
+
 
