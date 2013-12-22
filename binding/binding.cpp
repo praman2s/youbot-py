@@ -1,7 +1,7 @@
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2013, 
+ *  Copyright (c) 2013-2014, 
  *  Author : Praveen Ramanujam (praveen.ramanujam@locomotec.com) 
  *  Hocschule Bonn-Rhein-Sieg
  *  All rights reserved.
@@ -45,10 +45,8 @@ Robot* Robot::single=NULL;
 using namespace boost::python;
 
 Robot::Robot() {
-	// the whole setup is initialized with in the constructor
 	youBotBase = new youbot::YouBotBase("youbot-base");
 	this->youBotBase->doJointCommutation();
-	std::cout<<"RESETING ENCODER TO ZERO"<<std::endl;
 	for (unsigned int i=1;i<=4;i++)
 		youBotBase->getBaseJoint(i).setEncoderToZero();
 	this->youBotArm = new youbot::YouBotManipulator("youbot-manipulator");
