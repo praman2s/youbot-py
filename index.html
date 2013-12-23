@@ -45,7 +45,7 @@
             
   <div class="section" id="youbot-py">
 <h1>youBot-py<a class="headerlink" href="#youbot-py" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
+<p>This wrapper is intended for those who want to try pthon as a stand-alone language to work on youBot:</p>
 <ul class="simple">
 <li>The youbot-py is a pure python wrapper for the youbot_driver.</li>
 <li>Protoytping and a scripting layer has become an inevitable entity.</li>
@@ -61,11 +61,7 @@
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>Please follow the below installation instructions:</p>
 <ul>
-<li><p class="first">Compile <a class="reference external" href="https://github.com/youbot/youbot_driver">youbot_driver</a>.</p>
-</li>
-<li><p class="first">ROS framework is <strong>not</strong> required.</p>
-</li>
-<li><p class="first">Set the environment variables.</p>
+<li><p class="first">Compile <a class="reference external" href="https://github.com/youbot/youbot_driver">youbot_driver</a> and set the environment variables. ROS framework is not required.</p>
 <blockquote>
 <div><ul class="simple">
 <li>export LD_LIBRARY_PATH=/path_to_youbot_driver/lib/</li>
@@ -91,11 +87,41 @@
 </div>
 <div class="section" id="manual">
 <h1>Manual<a class="headerlink" href="#manual" title="Permalink to this headline">¶</a></h1>
+<p>The whole wrapper is divided into three parts:</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li>Communication with youbot.</li>
+<li>Getters and Setters for youbot arm.</li>
+<li>Getters and setters for youbot base.</li>
 </ul>
+<div class="section" id="communication-with-youbot">
+<h2>Communication with youbot<a class="headerlink" href="#communication-with-youbot" title="Permalink to this headline">¶</a></h2>
+<p>This sets up the communication between PC and youBot ethercat drivers:</p>
+<div class="highlight-python"><pre>from youbotpy import *   &lt;-------------- Imports all the modules that are being exposed
+robot = robot()            &lt;-------------Tries to establish connection, if not throws exception
+robot.Calibrate()             &lt;----------Optional. For some users who want candle positon as initial pose.</pre>
+</div>
+</div>
+<div class="section" id="getters-and-setters-for-youbot-arm">
+<h2>Getters and Setters for youbot arm<a class="headerlink" href="#getters-and-setters-for-youbot-arm" title="Permalink to this headline">¶</a></h2>
+<p>The wrapper allows you to work with arm alone. Config files have to altered accordingly:</p>
+<div class="highlight-python"><pre>arm  = robot.GetArm()[0]   &lt;------------- Get the first arm connected.(Support for dual arm as well)
+arm2 = robot.GetArm()[1]   &lt;------------- Get the second arm connected. (throws error if not connected)
+arm.GetJointValues()         &lt;----------- Returns the current joint value as 5x1 array.
+arm.SetJointValues(value)    &lt;----------- Sets joint values. value should be 5x1 array.
+arm.GetVelocityValues()      &lt;----------- Returns the current joint velocity as 5x1 array.
+arm.SetVelocityValues(value) &lt;----------- Sets joint velocity values. value should be 5x1 array.
+arm.GetTorqueValues()        &lt;----------- Returns the current joint torque values as 5x1 array.
+arm.SetTorqueValues(value)    &lt;----------- Sets joint toruque values. value should be 5x1 array.</pre>
+</div>
+</div>
+<div class="section" id="getters-and-setters-for-youbot-base">
+<h2>Getters and Setters for youbot base<a class="headerlink" href="#getters-and-setters-for-youbot-base" title="Permalink to this headline">¶</a></h2>
+<p>The wrapper allows you to work with base alone. Config files have to altered accordingly:</p>
+<div class="highlight-python"><pre>base = robot.GetBase()  &lt;-------------- Tries to check if the base is connected.
+base.SetVelocity([x,y,theta]) &lt;-------- Sets the base velocity to x,y and theta.
+base.GetVelocity()               &lt;----- Returns a 3x1 (x,y,\theta) velocity vector.</pre>
+</div>
+</div>
 </div>
 <div class="section" id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
@@ -130,7 +156,12 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#manual">Manual</a></li>
+<li><a class="reference internal" href="#manual">Manual</a><ul>
+<li><a class="reference internal" href="#communication-with-youbot">Communication with youbot</a></li>
+<li><a class="reference internal" href="#getters-and-setters-for-youbot-arm">Getters and Setters for youbot arm</a></li>
+<li><a class="reference internal" href="#getters-and-setters-for-youbot-base">Getters and Setters for youbot base</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 
