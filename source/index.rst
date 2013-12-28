@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-youBot-py
+youBot-py (Under Development)
 =====================================
+** The first stable release 1.0.0 will be made available on 01.01.2014**
 
 This wrapper is intended for those who want to try pthon as a stand-alone language to work on youBot:
 
