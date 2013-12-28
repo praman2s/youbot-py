@@ -31,9 +31,11 @@ Installation
 Please follow the below installation instructions:
 
 * Compile `youbot_driver`_ and set the environment variables. ROS framework is not required.
-
-                - export LD_LIBRARY_PATH=/path_to_youbot_driver/lib/
-                - export YOUBOT_HOME=/path_to_youbot_driver
+		
+		- Make sure that you change *path_to_youbot_driver* in the below to your current driver path.
+                - echo "source export LD_LIBRARY_PATH=/*path_to_youbot_driver*/lib/" >> ~/.bashrc
+                - echo "export YOUBOT_HOME=/*path_to_youbot_driver*" >> ~/.bashrc
+		- source ~/.bashrc 
 
 Building and Installing the wrapper:
 
