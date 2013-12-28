@@ -5,7 +5,14 @@
 
 youBot-py (Under Development)
 =====================================
-** The first stable release 1.0.0 will be made available on 01.01.2014**
+.. centered::
+**The first stable release 1.0.0 will be made available on 01.01.2014**
+
+
+.. image:: youbot.png
+    :height: 300
+    :align: center
+
 
 This wrapper is intended for those who want to try pthon as a stand-alone language to work on youBot:
 
