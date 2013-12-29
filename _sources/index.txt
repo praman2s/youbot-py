@@ -4,10 +4,9 @@
    contain the root `toctree` directive.
 
 youBot-py (Under Development)
-=====================================
-.. centered::
-**The first stable release 1.0.0 will be made available on 01.01.2014**
+===========================================================
 
+* **The first stable release 1.0.0 will be made available on 15.01.2014**
 
 .. image:: youbot.png
     :height: 300
@@ -21,8 +20,26 @@ This wrapper is intended for those who want to try pthon as a stand-alone langua
 - Developing a python wrapper for youBot with out any dependency of framework was the aim of this wrapper.
 - For issues or bug report, please raise a ticket to hotline@youbot-store.com 
 
+
+
 .. toctree::
    :maxdepth: 3
+
+Major Releases
+*******************
+
+The major releases does not include or plan for bug fixes.
+The bug fix release will happen as soon as a bug is found
+
+==================   ================    ==================
+Month-year             Release             Functions
+==================   ================    ==================
+Jan15-2014            V1.0.0              Pure Python Wrapper(debian)
+Jan30-2014            V1.1.0              Framework for TFF, Torque and Velocity Control
+Feb01-2014            V2.0.0              Arm Control utils (Support for trajectory)
+Mar01-2014            V2.1.0              Base Control Utils
+Mar31-2014            V3.0.0              Navigation Libraries
+==================   ================    ==================
 	
 
 Installation
@@ -110,3 +127,5 @@ This is an example file where it takes three lines to get connected to youBot::
 
 
 .. _youbot_driver: https://github.com/youbot/youbot_driver
+.. _youbot-store: http://www.youbot-store.com/
+
