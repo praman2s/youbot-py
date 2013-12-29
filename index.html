@@ -100,30 +100,32 @@
 <div class="section" id="communication-with-youbot">
 <h2>Communication with youbot<a class="headerlink" href="#communication-with-youbot" title="Permalink to this headline">¶</a></h2>
 <p>This sets up the communication between PC and youBot ethercat drivers:</p>
-<div class="highlight-python"><pre>from youbotpy import *   &lt;-------------- Imports all the modules that are being exposed
-robot = robot()            &lt;-------------Tries to establish connection, if not throws exception
-robot.Calibrate()             &lt;----------Optional. For some users who want candle positon as initial pose.</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">youbotpy</span> <span class="kn">import</span> <span class="o">*</span>     <span class="c"># Imports all the modules that are being exposed</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">robot</span><span class="p">()</span>            <span class="c"># Tries to establish connection, if not throws exception</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">Calibrate</span><span class="p">()</span>          <span class="c"># Optional. For some users who want candle positon as initial pose.</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="getters-and-setters-for-youbot-arm">
 <h2>Getters and Setters for youbot arm<a class="headerlink" href="#getters-and-setters-for-youbot-arm" title="Permalink to this headline">¶</a></h2>
 <p>The wrapper allows you to work with arm alone. Config files have to altered accordingly:</p>
-<div class="highlight-python"><pre>arm  = robot.GetArm()[0]   &lt;------------- Get the first arm connected.(Support for dual arm as well)
-arm2 = robot.GetArm()[1]   &lt;------------- Get the second arm connected. (throws error if not connected)
-arm.GetJointValues()         &lt;----------- Returns the current joint value as 5x1 array.
-arm.SetJointValues(value)    &lt;----------- Sets joint values. value should be 5x1 array.
-arm.GetVelocityValues()      &lt;----------- Returns the current joint velocity as 5x1 array.
-arm.SetVelocityValues(value) &lt;----------- Sets joint velocity values. value should be 5x1 array.
-arm.GetTorqueValues()        &lt;----------- Returns the current joint torque values as 5x1 array.
-arm.SetTorqueValues(value)    &lt;----------- Sets joint toruque values. value should be 5x1 array.</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">arm</span>  <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">GetArm</span><span class="p">()</span>           <span class="c"># Get the first arm connected.</span>
+<span class="n">arm</span><span class="o">.</span><span class="n">GetJointValues</span><span class="p">()</span>            <span class="c"># Returns the current joint value as 5x1 array.</span>
+<span class="n">arm</span><span class="o">.</span><span class="n">SetJointValues</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>       <span class="c"># Sets joint values. value should be 5x1 array.</span>
+<span class="n">arm</span><span class="o">.</span><span class="n">GetVelocityValues</span><span class="p">()</span>         <span class="c"># Returns the current joint velocity as 5x1 array.</span>
+<span class="n">arm</span><span class="o">.</span><span class="n">SetVelocityValues</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>    <span class="c"># Sets joint velocity values. value should be 5x1 array.</span>
+<span class="n">arm</span><span class="o">.</span><span class="n">GetTorqueValues</span><span class="p">()</span>           <span class="c"># Returns the current joint torque values as 5x1 array.</span>
+<span class="n">arm</span><span class="o">.</span><span class="n">SetTorqueValues</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>      <span class="c"># Sets joint toruque values. value should be 5x1 array.</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="getters-and-setters-for-youbot-base">
 <h2>Getters and Setters for youbot base<a class="headerlink" href="#getters-and-setters-for-youbot-base" title="Permalink to this headline">¶</a></h2>
 <p>The wrapper allows you to work with base alone. Config files have to altered accordingly:</p>
-<div class="highlight-python"><pre>base = robot.GetBase()  &lt;-------------- Tries to check if the base is connected.
-base.SetVelocity([x,y,theta]) &lt;-------- Sets the base velocity to x,y and theta.
-base.GetVelocity()               &lt;----- Returns a 3x1 (x,y,\theta) velocity vector.</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">base</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">GetBase</span><span class="p">()</span>          <span class="c"># Tries to check if the base is connected.</span>
+<span class="n">base</span><span class="o">.</span><span class="n">SetVelocity</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">theta</span><span class="p">])</span>   <span class="c"># Sets the base velocity to x,y and theta.</span>
+<span class="n">base</span><span class="o">.</span><span class="n">GetVelocity</span><span class="p">()</span>              <span class="c"># Returns a 3x1 (x,y,\theta) velocity vector.</span>
+</pre></div>
 </div>
 </div>
 </div>

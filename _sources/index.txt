@@ -61,32 +61,32 @@ Communication with youbot
 *********************************
 This sets up the communication between PC and youBot ethercat drivers::
 
-	from youbotpy import *   <-------------- Imports all the modules that are being exposed
-	robot = robot()            <-------------Tries to establish connection, if not throws exception
-	robot.Calibrate()             <----------Optional. For some users who want candle positon as initial pose.
+	from youbotpy import *     # Imports all the modules that are being exposed
+	robot = robot()            # Tries to establish connection, if not throws exception
+	robot.Calibrate()          # Optional. For some users who want candle positon as initial pose.
 
+           
 
 Getters and Setters for youbot arm
 ***********************************
 The wrapper allows you to work with arm alone. Config files have to altered accordingly::
 	
-	arm  = robot.GetArm()[0]   <------------- Get the first arm connected.(Support for dual arm as well)
-	arm2 = robot.GetArm()[1]   <------------- Get the second arm connected. (throws error if not connected)
-	arm.GetJointValues()	     <----------- Returns the current joint value as 5x1 array.
-	arm.SetJointValues(value)    <----------- Sets joint values. value should be 5x1 array.
-	arm.GetVelocityValues()	     <----------- Returns the current joint velocity as 5x1 array.
-	arm.SetVelocityValues(value) <----------- Sets joint velocity values. value should be 5x1 array.
-	arm.GetTorqueValues()	     <----------- Returns the current joint torque values as 5x1 array.
-	arm.SetTorqueValues(value)    <----------- Sets joint toruque values. value should be 5x1 array.
+	arm  = robot.GetArm()       	# Get the first arm connected.
+	arm.GetJointValues()	    	# Returns the current joint value as 5x1 array.
+	arm.SetJointValues(value)   	# Sets joint values. value should be 5x1 array.
+	arm.GetVelocityValues()	     	# Returns the current joint velocity as 5x1 array.
+	arm.SetVelocityValues(value) 	# Sets joint velocity values. value should be 5x1 array.
+	arm.GetTorqueValues()	    	# Returns the current joint torque values as 5x1 array.
+	arm.SetTorqueValues(value)   	# Sets joint toruque values. value should be 5x1 array.
 
 Getters and Setters for youbot base
 ************************************
 
 The wrapper allows you to work with base alone. Config files have to altered accordingly::
 	
-	base = robot.GetBase()  <-------------- Tries to check if the base is connected.
-	base.SetVelocity([x,y,theta]) <-------- Sets the base velocity to x,y and theta.
-	base.GetVelocity()               <----- Returns a 3x1 (x,y,\theta) velocity vector.
+	base = robot.GetBase()  	# Tries to check if the base is connected.
+	base.SetVelocity([x,y,theta]) 	# Sets the base velocity to x,y and theta.
+	base.GetVelocity()              # Returns a 3x1 (x,y,\theta) velocity vector.
 
 Examples
 ==================
