@@ -58,7 +58,7 @@ setup(name="PackageName",
         Extension("youbot", ["binding/binding.cpp"],
         include_dirs=[YOUBOT_HOME,os.path.join(YOUBOT_HOME,'soem/src'),os.path.join(current_dir,'binding')],
 	runtime_library_dirs = [os.path.join(current_dir,'lib')],
-        libraries = ['boost_python','YouBotDriver'])
+        libraries = ['boost_python','YOUBOT_HOME/lib/YouBotDriver'])
     ])
 
 #Causes error when trying to install. Have to deal with the name of the folder
