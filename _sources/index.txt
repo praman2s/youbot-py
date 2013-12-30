@@ -47,19 +47,13 @@ Installation
 
 Please follow the below installation instructions:
 
-* Compile `youbot_driver`_ and set the environment variables. ROS framework is not required.
-		
-		- Make sure that you change *path_to_youbot_driver* in the below to your current driver path.
-                - echo "source export LD_LIBRARY_PATH=/*path_to_youbot_driver*/lib/" >> ~/.bashrc
-                - echo "export YOUBOT_HOME=/*path_to_youbot_driver*" >> ~/.bashrc
-		- source ~/.bashrc 
-
 Building and Installing the wrapper:
 
 * Build and Install.
 
                 - git clone https://github.com/praman2s/youbot-py.git
                 - cd youbot-py
+		- sh configure.sh
                 - python setup.py build --build-base=.
                 - python setup.py install
 

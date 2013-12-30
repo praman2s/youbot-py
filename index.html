@@ -104,18 +104,6 @@ The bug fix release will happen as soon as a bug is found</p>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>Please follow the below installation instructions:</p>
-<ul>
-<li><p class="first">Compile <a class="reference external" href="https://github.com/youbot/youbot_driver">youbot_driver</a> and set the environment variables. ROS framework is not required.</p>
-<blockquote>
-<div><ul class="simple">
-<li>Make sure that you change <em>path_to_youbot_driver</em> in the below to your current driver path.</li>
-<li>echo &#8220;source export LD_LIBRARY_PATH=/<em>path_to_youbot_driver</em>/lib/&#8221; &gt;&gt; ~/.bashrc</li>
-<li>echo &#8220;export YOUBOT_HOME=/<em>path_to_youbot_driver</em>&#8221; &gt;&gt; ~/.bashrc</li>
-<li>source ~/.bashrc</li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
 <p>Building and Installing the wrapper:</p>
 <ul>
 <li><p class="first">Build and Install.</p>
@@ -123,6 +111,7 @@ The bug fix release will happen as soon as a bug is found</p>
 <div><ul class="simple">
 <li>git clone <a class="reference external" href="https://github.com/praman2s/youbot-py.git">https://github.com/praman2s/youbot-py.git</a></li>
 <li>cd youbot-py</li>
+<li>sh configure.sh</li>
 <li>python setup.py build &#8211;build-base=.</li>
 <li>python setup.py install</li>
 </ul>
