@@ -55,6 +55,7 @@ Building and Installing the wrapper:
                 - cd youbot-py
 		- sh configure.sh
                 - python setup.py build --build-base=.
+		- sudo bash
                 - python setup.py install
 
 Now the wrapper is ready to be tested.

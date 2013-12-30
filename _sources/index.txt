@@ -55,6 +55,7 @@ Building and Installing the wrapper:
                 - cd youbot-py
 		- sh configure.sh
                 - python setup.py build --build-base=.
+		- sudo bash
                 - python setup.py install
 
 Now the wrapper is ready to be tested.
@@ -126,5 +127,5 @@ This is an example file where it takes three lines to get connected to youBot::
 
 .. raw:: html
 
-	<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+	<a href="https://github.com/praman2s/youbot-py.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
