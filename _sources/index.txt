@@ -123,3 +123,8 @@ This is an example file where it takes three lines to get connected to youBot::
 .. _youbot_driver: https://github.com/youbot/youbot_driver
 .. _youbot-store: http://www.youbot-store.com/
 
+
+.. raw:: html
+
+	<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+
