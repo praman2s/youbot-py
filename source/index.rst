@@ -13,12 +13,14 @@ youBot-py (Under Development)
     :align: center
 
 
-This wrapper is intended for those who want to try pthon as a stand-alone language to work on youBot:
+This wrapper is intended as python library for youbot :
 
-- The youbot-py is a pure python wrapper for the youbot_driver.
+- The youbot-py is a pure python wrapper for youbot.
 - Protoytping and a scripting layer has become an inevitable entity. 
 - Developing a python wrapper for youBot with out any dependency of framework was the aim of this wrapper.
-- For issues or bug report, please raise a ticket to hotline@youbot-store.com 
+- Interfaces(Jacobian,Analytical IK, Trajectory Generation and Control and so on) for a robotic development will be included.
+- For issues or bug report, please raise a ticket to hotline@youbot-store.com.
+
 
 
 
@@ -99,6 +101,7 @@ The wrapper allows you to work with base alone. Config files have to altered acc
 	base = robot.GetBase()  	# Tries to check if the base is connected.
 	base.SetVelocity([x,y,theta]) 	# Sets the base velocity to x,y and theta.
 	base.GetVelocity()              # Returns a 3x1 (x,y,\theta) velocity vector.
+	base.GetPose()                  # Returns the pose info based on odometry.
 
 Examples
 ==================
