@@ -18,7 +18,7 @@ from distutils.extension import Extension
 import os,sys,shutil
 
 current_dir = os.getcwd()
-self_headers = os.path.join(current_dir,'bindings')
+self_headers = os.path.join(current_dir,'src/libbinding')
 
 try:
    YOUBOT_HOME = os.environ["YOUBOT_HOME"]
@@ -28,13 +28,13 @@ except KeyError:
    sys.exit(1)
 
  
-setup(name="PackageName",
+setup(name="youbot",
     ext_modules=[
  	
-        Extension("youbot", ["binding/binding.cpp"],
-        include_dirs=[YOUBOT_HOME,os.path.join(YOUBOT_HOME,'soem/src'),os.path.join(current_dir,'binding')],
+        Extension("youbot", ["src/libbinding/binding.cpp"],
+        include_dirs=[YOUBOT_HOME,os.path.join(YOUBOT_HOME,'soem/src'),os.path.join(current_dir,'src/libbinding')],
 	runtime_library_dirs = [os.path.join(current_dir,'lib')],
-        libraries = ['boost_python','YOUBOT_HOME/lib/YouBotDriver'])
+        libraries = ['YouBotDriver','boost_python'])
     ])
 
 #Causes error when trying to install. Have to deal with the name of the folder

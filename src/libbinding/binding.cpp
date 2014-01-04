@@ -89,9 +89,9 @@ bool Robot::SetBaseVelocity(const object& o){
 	std::vector<double> velocity;
 	velocity.resize(3);
 	velocity = ExtractArray<double>(o);
-	x_vel = velocity[0]*si::meters/si::second;
-	y_vel = velocity[1]*si::meters/si::second;
-        z_vel = velocity[2]*si::radian/si::second;
+	//x_vel = velocity[0]*si::meters/si::second;
+	//y_vel = velocity[1]*si::meters/si::second;
+        //z_vel = velocity[2]*si::radian/si::second;
 	this->youBotBase->setBaseVelocity(x_vel,y_vel,z_vel);
 	return true;
 }
@@ -134,7 +134,7 @@ BOOST_PYTHON_MODULE(youbot)
     using namespace boost::python;
     numeric::array::set_module_and_type("numpy", "ndarray"); 
     import_array();
-    class_<Robot>("robot",init<>())
+    class_<Robot, boost::noncopyable>("robot",init<>())
 	.def("Calibrate", &Robot::startcalib)
 	.def("GetArmJointValues", &Robot::GetArmJointValues)
 	.def("SetArmJointValues", &Robot::SetArmJointValues)

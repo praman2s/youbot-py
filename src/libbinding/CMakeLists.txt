@@ -7,7 +7,7 @@ FIND_PACKAGE(Boost COMPONENTS
                 thread
                 python REQUIRED)
 
-find_package(PythonLibs REQUIRED)
+find_package(PythonLibs 2.7 REQUIRED)
 
 INCLUDE_DIRECTORIES(${PYTHON_LIBRARIES})
 INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
