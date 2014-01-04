@@ -1,0 +1,2 @@
+/usr/bin/ar cr libgui.a  CMakeFiles/libgui.dir/robotvision.cpp.o CMakeFiles/libgui.dir/moc_youbot_sim.cxx.o CMakeFiles/libgui.dir/moc_youbot_ik.cxx.o CMakeFiles/libgui.dir/moc_youbot_hwe.cxx.o CMakeFiles/libgui.dir/moc_robotvision.cxx.o CMakeFiles/libgui.dir/moc_common.cxx.o CMakeFiles/libgui.dir/moc_youbot_int.cxx.o CMakeFiles/libgui.dir/moc_ui_robotvision.cxx.o CMakeFiles/libgui.dir/__/moc_binding.cxx.o
+/usr/bin/ranlib libgui.a
