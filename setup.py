@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+""" 
 .. examplepre-block:: python setup.py build --build-base=.
 
 Description
