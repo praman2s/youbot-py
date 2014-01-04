@@ -1,4 +1,4 @@
-sudo apt-get install git git-core cmake libboost-all-dev python-dev python-numpy xdotool
+sudo apt-get install git git-core cmake libboost-all-dev python-dev python-numpy xdotool qt-sdk
 git clone git://github.com/youbot/youbot_driver.git
 cd youbot_driver
 mkdir build
