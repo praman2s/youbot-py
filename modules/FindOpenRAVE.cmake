@@ -40,6 +40,7 @@ if(NOT OpenRAVE_DIR)
     get_filename_component(_OpenRAVE_PATH "${_OpenRAVE_CONFIG_EXECUTABLE}" PATH) # bin
     get_filename_component(_OpenRAVE_PATH "${_OpenRAVE_PATH}" PATH)
     set(_OpenRAVE_PATHS ${_OpenRAVE_PATHS} ${_OpenRAVE_PATH})
+    MESSAGE(STATUS "Looking for OpenRAVE library-- found " ${_OpenRAVE_PATHS})
   endif( _OpenRAVE_CONFIG_EXECUTABLE )
 endif(NOT OpenRAVE_DIR)
 

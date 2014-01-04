@@ -69,7 +69,7 @@ IF(YOUBOT_GUI)
                        
   LINK_DIRECTORIES(${Boost_LIBRARY_DIRS} )
   
-  ADD_SUBDIRECTORY (binding)
+  ADD_SUBDIRECTORY (src/libgui)
     
   #FILE( GLOB RES_FILES *.rc )
   #QT4_WRAP_CPP( QT_MOC_SRC application.h )
