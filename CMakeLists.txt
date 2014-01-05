@@ -16,7 +16,7 @@ SET(YOUBOT_PATH $ENV{YOUBOT_HOME})
 # 				Required common packages                     #
 ##############################################################################
 
-FIND_PACKAGE( Boost COMPONENTS  system serialization thread REQUIRED )
+FIND_PACKAGE( Boost 1.47 EXACT COMPONENTS  system serialization thread REQUIRED )
 IF(Boost_FOUND)
   MESSAGE(STATUS "Boost library found at first attempt.")
 ELSE(Boost_FOUND)
@@ -78,7 +78,9 @@ IF(YOUBOT_GUI)
   #QT4_WRAP_CPP( QT_MOC_SRC application.h )
   
   ADD_EXECUTABLE(youbot_gui ${CMAKE_SOURCE_DIR}/src/main.cpp)
+  ADD_EXECUTABLE(robot ${CMAKE_SOURCE_DIR}/src/robot.cpp)
   TARGET_LINK_LIBRARIES(youbot_gui libgui)
+  TARGET_LINK_LIBRARIES(robot libgui)
   #SET( HDR_FILES_GUI application.h )
 
 ENDIF(YOUBOT_GUI)

@@ -1,20 +1,21 @@
 FILE( GLOB FORMS_UI *.ui )
 QT4_WRAP_UI( QTUI_H_SRC ${FORMS_UI} )
 
-FILE( GLOB QT_MOC_HDR robotvision.h ui_robotvision.h )	
+FILE( GLOB QT_MOC_HDR robotvision.h ui_robotvision.h robotmain.h ui_robotmain.h )	
 QT4_WRAP_CPP( QT_MOC_SRC ${QT_MOC_HDR} )
 
-FILE( GLOB SRC_FILES robotvision.cpp )
-FILE( GLOB HDR_FILES robotvision.hpp ui_robotvision.h )
+FILE( GLOB SRC_FILES robotvision.cpp robotmain.cpp)
+FILE( GLOB HDR_FILES robotvision.h ui_robotvision.h robotmain.h ui_robotmain.h )
 FILE( GLOB RES_FILES *.qrc )
 
 ADD_DEFINITIONS( -DSOQT_DLL -DCOIN_DLL )
 
 INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}
                      ${SOQT_INCLUDE_DIR} 
-                     ${QT_INCLUDE_DIR})
+                     ${QT_INCLUDE_DIR}
+		     ${Boost_LIBRARY_DIRS})
 
-QT4_ADD_RESOURCES( CPP_RES_FILES ${RES_FILES} )
+QT4_ADD_RESOURCES( CPP_RES_FILES ${RES_FILES} OPTIONS -DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED)
 
 ADD_LIBRARY( libgui SHARED ${CPP_RES_FILES} ${SRC_FILES} ${HDR_FILES} 
 					${QT_MOC_SRC} ${QTUI_H_SRC} )

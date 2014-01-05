@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+
 namespace Ui {
 class RobotVision;
 }
@@ -13,10 +14,12 @@ class RobotVision : public QMainWindow
     
 public:
     explicit RobotVision(QWidget *parent = 0);
+
     ~RobotVision();
     
 private:
     Ui::RobotVision *ui;
+
 };
 
 #endif // ROBOTVISION_H

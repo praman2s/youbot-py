@@ -2,7 +2,7 @@
 FILE( GLOB SRC_FILES *.cpp )
 FILE( GLOB HDR_FILES *.h )
 
-FIND_PACKAGE(Boost COMPONENTS
+FIND_PACKAGE(Boost 1.47 EXACT COMPONENTS
                 system
                 thread
                 python REQUIRED)

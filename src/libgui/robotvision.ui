@@ -11,7 +11,7 @@
     <x>0</x>
     <y>0</y>
     <width>850</width>
-    <height>759</height>
+    <height>687</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -43,6 +43,9 @@
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <widget class="QSplitter" name="splitter">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="minimumSize">
        <size>
         <width>600</width>
@@ -70,6 +73,9 @@
        </property>
        <property name="currentIndex">
         <number>0</number>
+       </property>
+       <property name="movable">
+        <bool>true</bool>
        </property>
        <widget class="QWidget" name="probTab">
         <attribute name="title">
@@ -105,6 +111,12 @@
        </property>
        <property name="currentIndex">
         <number>0</number>
+       </property>
+       <property name="tabsClosable">
+        <bool>true</bool>
+       </property>
+       <property name="movable">
+        <bool>true</bool>
        </property>
        <widget class="QWidget" name="introTab">
         <property name="enabled">
@@ -159,11 +171,15 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Actions</string>
     </property>
+    <addaction name="actionRobot_Connect"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionLoad_Environment"/>
+    <addaction name="actionLoad_Problem"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -274,6 +290,26 @@ p, li { white-space: pre-wrap; }
   <action name="actionAbout">
    <property name="text">
     <string>About...</string>
+   </property>
+  </action>
+  <action name="actionLoad_Environment">
+   <property name="text">
+    <string>Load Environment</string>
+   </property>
+  </action>
+  <action name="actionLoad_Problem">
+   <property name="text">
+    <string>Load Problem</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionRobot_Connect">
+   <property name="text">
+    <string>Robot Connect</string>
    </property>
   </action>
  </widget>
