@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'youbot-py'
-copyright = u'2013, Prof. Paul G.Ploeger, Prof. Erwin Prassler, Praveen Ramanujam'
+copyright = u'2013-14, Locomotec GmBH, Hochschule Bonn-Rhien-Sieg'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
