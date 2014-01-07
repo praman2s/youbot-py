@@ -19,7 +19,8 @@ This wrapper is intended as python library for youbot :
 - Protoytping and a scripting layer has become an inevitable entity. 
 - Developing a python wrapper for youBot with out any dependency of framework was the aim of this wrapper.
 - Interfaces(Jacobian,Analytical IK, Trajectory Generation and Control and so on) for a robotic development will be included.
-- For issues or bug report, please raise a ticket to hotline@youbot-store.com.
+- In order to request new features, please raise ticket to hotline@youbot-store.com.
+- For help in installation and reporting issues, add a issue in git hub https://github.com/praman2s/youbot-py/issues
 
 
 
@@ -36,11 +37,7 @@ The bug fix release will happen as soon as a bug is found
 ==================   ================    ==================
 Month-year             Release             Functions
 ==================   ================    ==================
-Jan15-2014            V1.0.0              Pure Python Wrapper(debian)
-Jan30-2014            V1.1.0              Framework for TFF, Torque and Velocity Control
-Feb01-2014            V2.0.0              Arm Control utils (Support for trajectory)
-Mar01-2014            V2.1.0              Base Control Utils
-Mar31-2014            V3.0.0              Navigation Libraries
+Jan15-2014            V0.1              Pure Python Wrapper(debian)
 ==================   ================    ==================
 	
 
