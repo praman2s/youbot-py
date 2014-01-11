@@ -7,6 +7,7 @@ youBot-py (Under Development)
 ===========================================================
 
 * **The first stable release 1.0.0 will be made available on 15.01.2014**
+For the changes log, refer to :ref:`changelog`
 
 .. image:: youbot.png
     :height: 300
@@ -37,7 +38,9 @@ The bug fix release will happen as soon as a bug is found
 ==================   ================    ==================
 Month-year             Release             Functions
 ==================   ================    ==================
-Jan15-2014            V0.1              Pure Python Wrapper(debian)
+Jan15-2014            V0.1                Support for Arm
+Jan30-2014            V0.2                Support for Base
+Feb15-2014            V0.3                Independent of Boost at Driver 
 ==================   ================    ==================
 	
 
