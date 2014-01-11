@@ -7,7 +7,7 @@ youBot-py (Under Development)
 ===========================================================
 
 * **The first stable release 1.0.0 will be made available on 15.01.2014**
-For the changes log, refer to :ref:`changelog`
+For the changes happening, refer to :ref:`changelog`
 
 .. image:: youbot.png
     :height: 300
