@@ -37,28 +37,21 @@
 #include "binding.h"
 #include <boost/python.hpp>
 
-
 namespace YOUBOTPYTHON{
-
-bool Robot::instanceFlag =false; 
-Robot* Robot::single=NULL; 
 using namespace boost::python;
 
-Robot::Robot() {
-	youBotBase = new youbot::YouBotBase("youbot-base");
-	this->youBotBase->doJointCommutation();
-	for (unsigned int i=1;i<=4;i++)
-		youBotBase->getBaseJoint(i).setEncoderToZero();
+Arm::Arm() {
+
 	this->youBotArm = new youbot::YouBotManipulator("youbot-manipulator");
 	this->youBotArm->doJointCommutation();
 	this->youBotArm->calibrateManipulator();
-	this->nrofJoints=5;
-
-
 }
-bool Robot::startcalib(){
+
+bool Arm::startcalib(){
+
 	std::vector<youbot::JointAngleSetpoint> jointSetAngle;
-	jointSetAngle.resize(this->nrofJoints);
+	jointSetAngle.resize(5);
+	SLEEP_SEC(5);
 	jointSetAngle[0].angle =  2.96244 * radian;
 	jointSetAngle[1].angle = 1.04883 * radian;
 	jointSetAngle[2].angle =-2.43523* radian;
@@ -68,13 +61,35 @@ bool Robot::startcalib(){
 	SLEEP_SEC(5);
 	for (unsigned int i=1;i<=5;i++)
 		youBotArm->getArmJoint(i).setEncoderToZero();
+	
+	SLEEP_SEC(2);
+	return true;
+
+}
+
+
+
+bool Arm::EnableTorqueMode(){
+	
+	std::vector<youbot::JointTorqueSetpoint> torqueSetpoint;
+	torqueSetpoint.resize(5);
+	youbot::JointSensedTorque torque;
+	for(std::size_t i=0;i<5;i++){
+		this->youBotArm->getArmJoint(i+1).getData(torque);
+		torqueSetpoint[i] = 0.0*newton_meter;
+	}
+	
+	youBotArm->setJointData(torqueSetpoint);
+	SLEEP_SEC(2);
+	
 	return true;
 }
-object Robot::GetArmJointValues(){
+
+object Arm::GetJointValues(){
 	youbot::JointSensedAngle angle;
 	std::vector<double> JointAngles;
-	JointAngles.resize(this->nrofJoints);
-	for(std::size_t i=0;i<this->nrofJoints;i++){
+	JointAngles.resize(5);
+	for(std::size_t i=0;i<5;i++){
 		this->youBotArm->getArmJoint(i+1).getData(angle);
 		JointAngles[i] = (double)angle.angle.value();
 	}
@@ -82,28 +97,46 @@ object Robot::GetArmJointValues(){
 	return PyArray(JointAngles);
 
 }
-bool Robot::SetBaseVelocity(const object& o){
-	quantity<si::velocity> x_vel;
-	quantity<si::velocity> y_vel;
-	quantity<si::angular_velocity> z_vel;
-	std::vector<double> velocity;
-	velocity.resize(3);
-	velocity = ExtractArray<double>(o);
-	//x_vel = velocity[0]*si::meters/si::second;
-	//y_vel = velocity[1]*si::meters/si::second;
-        //z_vel = velocity[2]*si::radian/si::second;
-	this->youBotBase->setBaseVelocity(x_vel,y_vel,z_vel);
-	return true;
+
+object Arm::GetJointTorqueValues(){
+
+	youbot::JointSensedTorque torque;
+	std::vector<double> JointTorques;
+	for(std::size_t i=0;i<5;i++){
+		this->youBotArm->getArmJoint(i+1).getData(torque);
+		JointTorques[i] = (double)torque.torque.value();
+	}
+	return PyArray(JointTorques);
+
 }
 
-bool Robot::SetArmJointValues(const object& o){
+
+bool Arm::SetJointTorqueValues(const object& o){
+	
+	std::vector<double> JointTorques;
+	JointTorques.resize(5);
+	JointTorques = ExtractArray<double>(o);
+	std::vector<youbot::JointTorqueSetpoint> jointSetTorque;
+	jointSetTorque.resize(5);
+	for(std::size_t i=0;i<5;i++){
+		jointSetTorque[i].torque = JointTorques[i]*newton_meter;
+	}
+	this->youBotArm->setJointData(jointSetTorque);
+
+	return true;
+
+
+}
+
+
+bool Arm::SetJointValues(const object& o){
 	youbot::JointSensedAngle angle;
 	std::vector<double> JointAngles;
-	JointAngles.resize(this->nrofJoints);
+	JointAngles.resize(5);
 	JointAngles = ExtractArray<double>(o);
 	std::vector<youbot::JointAngleSetpoint> jointSetAngle;
-	jointSetAngle.resize(this->nrofJoints);
-	for(std::size_t i=0;i<this->nrofJoints;i++){
+	jointSetAngle.resize(5);
+	for(std::size_t i=0;i<5;i++){
 		jointSetAngle[i].angle = JointAngles[i]*radian;
 	}
 	youBotArm->setJointData(jointSetAngle);
@@ -111,22 +144,9 @@ bool Robot::SetArmJointValues(const object& o){
 
 }
 
-Robot::~Robot() {
-	instanceFlag = false;
+Arm::~Arm() {
+	
 
-}
-Robot* Robot::getInstance(){
-
-	if(! instanceFlag)
-	{
-		single = new Robot();
-		instanceFlag = true;
-		return single;
-	}
-	else
-	{
-		return single;
-	}
 }
 
 BOOST_PYTHON_MODULE(youbot)
@@ -134,14 +154,16 @@ BOOST_PYTHON_MODULE(youbot)
     using namespace boost::python;
     numeric::array::set_module_and_type("numpy", "ndarray"); 
     import_array();
-    class_<Robot, boost::noncopyable>("robot",init<>())
-	.def("Calibrate", &Robot::startcalib)
-	.def("GetArmJointValues", &Robot::GetArmJointValues)
-	.def("SetArmJointValues", &Robot::SetArmJointValues)
-	.def("SetBaseVelocity", &Robot::SetBaseVelocity)
-	//.def("Destroy", &Robot::~Robot)
-	.def_readonly("GetJoints", &Robot::nrofJoints);
-    //def("init_robot", &RobotHardware::RobotHardware);
+    class_<YOUBOTPYTHON::Arm, boost::noncopyable>("arm",init<>())
+	.def("Calibrate", &Arm::startcalib)
+	.def("GetJointValues", &Arm::GetJointValues)
+	.def("SetJointValues", &Arm::SetJointValues)
+	.def("GetJointTorqueValues", &Arm::GetJointTorqueValues)
+	.def("SetJointTorqueValues", &Arm::SetJointTorqueValues)
+	.def("EnableTorqueMode", &Arm::EnableTorqueMode);
+    class_<Robot, boost::noncopyable>("robot",init<>());
+	
+	
 }
 
 } /* namespace YOUBOTPY */
