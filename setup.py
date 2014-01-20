@@ -31,10 +31,10 @@ except KeyError:
 setup(name="youbot",
     ext_modules=[
  	
-        Extension("youbot", ["src/libbinding/binding.cpp"],
-        include_dirs=[YOUBOT_HOME,os.path.join(YOUBOT_HOME,'soem/src'),os.path.join(current_dir,'src/libbinding')],
+        Extension("youbot", ["src/libbinding/binding.cpp"],	
+        include_dirs=[YOUBOT_HOME,os.path.join(YOUBOT_HOME,'soem/src'),os.path.join(current_dir,'src/libbinding'),'/usr/local/lib/'],
 	runtime_library_dirs = [os.path.join(current_dir,'lib')],
-        libraries = ['YouBotDriver','boost_python'])
+        libraries = ['boost_python','/usr/local/lib/YouBotDriver'])
     ])
 
 #Causes error when trying to install. Have to deal with the name of the folder
