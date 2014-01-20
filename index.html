@@ -46,9 +46,10 @@
   <div class="section" id="youbot-py-under-development">
 <h1>youBot-py (Under Development)<a class="headerlink" href="#youbot-py-under-development" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><strong>The first stable release 1.0.0 will be made available on 15.01.2014</strong></li>
+<li><strong>The first stable release 0.1.0 was made available on 19.01.2014</strong></li>
+<li><strong>The next stable release 0.2.0 was made available on 30.01.2014</strong></li>
 </ul>
-<p>For the changes log, refer to <a class="reference internal" href="changelog.html#changelog"><em>ChangeLog</em></a></p>
+<p>For the changes happening, refer to <a class="reference internal" href="changelog.html#changelog"><em>ChangeLog</em></a></p>
 <img alt="_images/youbot.png" class="align-center" src="_images/youbot.png" style="height: 300px;" />
 <p>This wrapper is intended as python library for youbot :</p>
 <ul class="simple">
@@ -69,9 +70,9 @@
 The bug fix release will happen as soon as a bug is found</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="28%" />
-<col width="25%" />
-<col width="48%" />
+<col width="27%" />
+<col width="24%" />
+<col width="49%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Month-year</th>
@@ -80,7 +81,7 @@ The bug fix release will happen as soon as a bug is found</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Jan15-2014</td>
+<tr class="row-even"><td>Jan19-2014</td>
 <td>V0.1</td>
 <td>Support for Arm</td>
 </tr>
@@ -90,7 +91,11 @@ The bug fix release will happen as soon as a bug is found</p>
 </tr>
 <tr class="row-even"><td>Feb15-2014</td>
 <td>V0.3</td>
-<td>Independent of Boost at Driver</td>
+<td>Whole Body Support (FSM support)</td>
+</tr>
+<tr class="row-odd"><td>Feb28-2014</td>
+<td>V1.0</td>
+<td>Final Release with maintanence</td>
 </tr>
 </tbody>
 </table>
@@ -136,7 +141,7 @@ The bug fix release will happen as soon as a bug is found</p>
 <div class="section" id="getters-and-setters-for-youbot-arm">
 <h2>Getters and Setters for youbot arm<a class="headerlink" href="#getters-and-setters-for-youbot-arm" title="Permalink to this headline">¶</a></h2>
 <p>The wrapper allows you to work with arm alone. Config files have to altered accordingly:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">arm</span>  <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">GetArm</span><span class="p">()</span>           <span class="c"># Get the first arm connected.</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">arm</span>  <span class="o">=</span> <span class="n">arm</span><span class="p">()</span>                    <span class="c"># Get the first arm connected.</span>
 <span class="n">arm</span><span class="o">.</span><span class="n">GetJointValues</span><span class="p">()</span>            <span class="c"># Returns the current joint value as 5x1 array.</span>
 <span class="n">arm</span><span class="o">.</span><span class="n">SetJointValues</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>       <span class="c"># Sets joint values. value should be 5x1 array.</span>
 <span class="n">arm</span><span class="o">.</span><span class="n">GetVelocityValues</span><span class="p">()</span>         <span class="c"># Returns the current joint velocity as 5x1 array.</span>

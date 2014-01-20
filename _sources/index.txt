@@ -6,8 +6,10 @@
 youBot-py (Under Development)
 ===========================================================
 
-* **The first stable release 1.0.0 will be made available on 15.01.2014**
-For the changes log, refer to :ref:`changelog`
+* **The first stable release 0.1.0 was made available on 19.01.2014**
+* **The next stable release 0.2.0 was made available on 30.01.2014**
+
+For the changes happening, refer to :ref:`changelog`
 
 .. image:: youbot.png
     :height: 300
@@ -24,8 +26,6 @@ This wrapper is intended as python library for youbot :
 - For help in installation and reporting issues, add a issue in git hub https://github.com/praman2s/youbot-py/issues
 
 
-
-
 .. toctree::
    :maxdepth: 3
 
@@ -38,9 +38,10 @@ The bug fix release will happen as soon as a bug is found
 ==================   ================    ==================
 Month-year             Release             Functions
 ==================   ================    ==================
-Jan15-2014            V0.1                Support for Arm
+Jan19-2014            V0.1                Support for Arm
 Jan30-2014            V0.2                Support for Base
-Feb15-2014            V0.3                Independent of Boost at Driver 
+Feb15-2014            V0.3                Whole Body Support (FSM support)
+Feb28-2014            V1.0                Final Release with maintanence 
 ==================   ================    ==================
 	
 
@@ -85,7 +86,7 @@ Getters and Setters for youbot arm
 ***********************************
 The wrapper allows you to work with arm alone. Config files have to altered accordingly::
 	
-	arm  = robot.GetArm()       	# Get the first arm connected.
+	arm  = arm()       		# Get the first arm connected.
 	arm.GetJointValues()	    	# Returns the current joint value as 5x1 array.
 	arm.SetJointValues(value)   	# Sets joint values. value should be 5x1 array.
 	arm.GetVelocityValues()	     	# Returns the current joint velocity as 5x1 array.
