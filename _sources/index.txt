@@ -7,7 +7,7 @@ youBot-py (Under Development)
 ===========================================================
 
 * **The first stable release 0.1.0 was made available on 19.01.2014**
-* **The next stable release 0.2.0 was made available on 30.01.2014**
+* **The next stable release 0.2.0 will be made available on 30.01.2014**
 
 For the changes happening, refer to :ref:`changelog`
 
@@ -19,9 +19,7 @@ For the changes happening, refer to :ref:`changelog`
 This wrapper is intended as python library for youbot :
 
 - The youbot-py is a pure python wrapper for youbot.
-- Protoytping and a scripting layer has become an inevitable entity. 
 - Developing a python wrapper for youBot with out any dependency of framework was the aim of this wrapper.
-- Interfaces(Jacobian,Analytical IK, Trajectory Generation and Control and so on) for a robotic development will be included.
 - In order to request new features, please raise ticket to hotline@youbot-store.com.
 - For help in installation and reporting issues, add a issue in git hub https://github.com/praman2s/youbot-py/issues
 
@@ -82,7 +80,7 @@ This sets up the communication between PC and youBot ethercat drivers::
 
            
 
-Getters and Setters for youbot arm
+Getters and Setters for youbot arm (Available)
 ***********************************
 The wrapper allows you to work with arm alone. Config files have to altered accordingly::
 	
@@ -94,7 +92,7 @@ The wrapper allows you to work with arm alone. Config files have to altered acco
 	arm.GetTorqueValues()	    	# Returns the current joint torque values as 5x1 array.
 	arm.SetTorqueValues(value)   	# Sets joint toruque values. value should be 5x1 array.
 
-Getters and Setters for youbot base
+Getters and Setters for youbot base (for 0.2.0)
 ************************************
 
 The wrapper allows you to work with base alone. Config files have to altered accordingly::
@@ -112,16 +110,12 @@ This is an example file where it takes three lines to get connected to youBot::
 	from youbotpy import *   #exposes youbot_driver to python
 	import time
 
-	robot = robot()    # Calls the constructor . Important to call at the begining
-	robot.Calibrate()  # Sets the robot in candle position and sets encoder to zero
-	joint_values = [1,1,1,1,1] # some position that of the arm that the user demands
+	robot = arm()    # Calls the constructor . Important to call at the begining
+	#robot.Calibrate()  # Sets the robot in candle position and sets encoder to zero
+	joint_values = [1,1,-1,1,1] # some position that of the arm that the user demands
 	robot.SetArmJointValues(joint_values) # sets the joint values
 	time.sleep(2)
-	current = time.time()
-
-	while (time.time()-current < 5):
-		robot.SetBaseVelocity([0.1,0,0]) #Sets the base velocity to x - 0.1 for 5 seconds
-
+	
 	print "End of Hello World..!!!"
 
 

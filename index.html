@@ -47,16 +47,14 @@
 <h1>youBot-py (Under Development)<a class="headerlink" href="#youbot-py-under-development" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><strong>The first stable release 0.1.0 was made available on 19.01.2014</strong></li>
-<li><strong>The next stable release 0.2.0 was made available on 30.01.2014</strong></li>
+<li><strong>The next stable release 0.2.0 will be made available on 30.01.2014</strong></li>
 </ul>
 <p>For the changes happening, refer to <a class="reference internal" href="changelog.html#changelog"><em>ChangeLog</em></a></p>
 <img alt="_images/youbot.png" class="align-center" src="_images/youbot.png" style="height: 300px;" />
 <p>This wrapper is intended as python library for youbot :</p>
 <ul class="simple">
 <li>The youbot-py is a pure python wrapper for youbot.</li>
-<li>Protoytping and a scripting layer has become an inevitable entity.</li>
 <li>Developing a python wrapper for youBot with out any dependency of framework was the aim of this wrapper.</li>
-<li>Interfaces(Jacobian,Analytical IK, Trajectory Generation and Control and so on) for a robotic development will be included.</li>
 <li>In order to request new features, please raise ticket to <a class="reference external" href="mailto:hotline&#37;&#52;&#48;youbot-store&#46;com">hotline<span>&#64;</span>youbot-store<span>&#46;</span>com</a>.</li>
 <li>For help in installation and reporting issues, add a issue in git hub <a class="reference external" href="https://github.com/praman2s/youbot-py/issues">https://github.com/praman2s/youbot-py/issues</a></li>
 </ul>
@@ -138,8 +136,8 @@ The bug fix release will happen as soon as a bug is found</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="getters-and-setters-for-youbot-arm">
-<h2>Getters and Setters for youbot arm<a class="headerlink" href="#getters-and-setters-for-youbot-arm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getters-and-setters-for-youbot-arm-available">
+<h2>Getters and Setters for youbot arm (Available)<a class="headerlink" href="#getters-and-setters-for-youbot-arm-available" title="Permalink to this headline">¶</a></h2>
 <p>The wrapper allows you to work with arm alone. Config files have to altered accordingly:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">arm</span>  <span class="o">=</span> <span class="n">arm</span><span class="p">()</span>                    <span class="c"># Get the first arm connected.</span>
 <span class="n">arm</span><span class="o">.</span><span class="n">GetJointValues</span><span class="p">()</span>            <span class="c"># Returns the current joint value as 5x1 array.</span>
@@ -151,8 +149,8 @@ The bug fix release will happen as soon as a bug is found</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="getters-and-setters-for-youbot-base">
-<h2>Getters and Setters for youbot base<a class="headerlink" href="#getters-and-setters-for-youbot-base" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getters-and-setters-for-youbot-base-for-0-2-0">
+<h2>Getters and Setters for youbot base (for 0.2.0)<a class="headerlink" href="#getters-and-setters-for-youbot-base-for-0-2-0" title="Permalink to this headline">¶</a></h2>
 <p>The wrapper allows you to work with base alone. Config files have to altered accordingly:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">base</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">GetBase</span><span class="p">()</span>          <span class="c"># Tries to check if the base is connected.</span>
 <span class="n">base</span><span class="o">.</span><span class="n">SetVelocity</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">theta</span><span class="p">])</span>   <span class="c"># Sets the base velocity to x,y and theta.</span>
@@ -168,15 +166,11 @@ The bug fix release will happen as soon as a bug is found</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">youbotpy</span> <span class="kn">import</span> <span class="o">*</span>   <span class="c">#exposes youbot_driver to python</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="n">robot</span> <span class="o">=</span> <span class="n">robot</span><span class="p">()</span>    <span class="c"># Calls the constructor . Important to call at the begining</span>
-<span class="n">robot</span><span class="o">.</span><span class="n">Calibrate</span><span class="p">()</span>  <span class="c"># Sets the robot in candle position and sets encoder to zero</span>
-<span class="n">joint_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c"># some position that of the arm that the user demands</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">arm</span><span class="p">()</span>    <span class="c"># Calls the constructor . Important to call at the begining</span>
+<span class="c">#robot.Calibrate()  # Sets the robot in candle position and sets encoder to zero</span>
+<span class="n">joint_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c"># some position that of the arm that the user demands</span>
 <span class="n">robot</span><span class="o">.</span><span class="n">SetArmJointValues</span><span class="p">(</span><span class="n">joint_values</span><span class="p">)</span> <span class="c"># sets the joint values</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">current</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">current</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">):</span>
-        <span class="n">robot</span><span class="o">.</span><span class="n">SetBaseVelocity</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="c">#Sets the base velocity to x - 0.1 for 5 seconds</span>
 
 <span class="k">print</span> <span class="s">&quot;End of Hello World..!!!&quot;</span>
 </pre></div>
@@ -198,8 +192,8 @@ The bug fix release will happen as soon as a bug is found</p>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#manual">Manual</a><ul>
 <li><a class="reference internal" href="#communication-with-youbot">Communication with youbot</a></li>
-<li><a class="reference internal" href="#getters-and-setters-for-youbot-arm">Getters and Setters for youbot arm</a></li>
-<li><a class="reference internal" href="#getters-and-setters-for-youbot-base">Getters and Setters for youbot base</a></li>
+<li><a class="reference internal" href="#getters-and-setters-for-youbot-arm-available">Getters and Setters for youbot arm (Available)</a></li>
+<li><a class="reference internal" href="#getters-and-setters-for-youbot-base-for-0-2-0">Getters and Setters for youbot base (for 0.2.0)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
