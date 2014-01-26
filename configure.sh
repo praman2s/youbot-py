@@ -1,4 +1,4 @@
-sudo apt-get install git git-core cmake libboost-all-dev python-dev python-numpy xdotool qt-sdk libxml2-dev libboost-thread-dev libboost-date-time-dev libboost-filesystem-dev libboost-system-dev libboost-regex-dev
+sudo apt-get install git git-core cmake libboost-all-dev python-dev python-numpy qt-sdk libxml2-dev libboost-thread-dev libboost-date-time-dev libboost-filesystem-dev libboost-system-dev libboost-regex-dev
 git clone git://github.com/youbot/youbot_driver.git
 cd youbot_driver
 mkdir build

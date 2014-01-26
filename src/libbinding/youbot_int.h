@@ -48,6 +48,10 @@
  *
  ****************************************************************/
 
+#ifndef YOUBOT_YOUBOTINT_H
+#define YOUBOT_YOUBOTINT_H
+
+
 #include <boost/array.hpp>
 #include <boost/multi_array.hpp>
 #include <boost/python/numeric.hpp>
@@ -62,8 +66,38 @@
 
 // Contains all the required headers and the inline templates for python conversion
 
+
+//ALL FAULT CODES NEEDS TO BE DEFINED HERE (currently defines 8 levels of severity)
+/*
+
+Bit 0   --   SOFT JOINT LIMITS EXCEEDED 
+Bit 1   --   HARD JOINT LIMITS EXCEEDED
+Bit 2   --   HALL SENSOR DEFECT
+Bit 3   --   OVER CURRENT (OC)
+Bit 4   --   OVER TEMPERATURE (OT)
+Bit 5   --   USER DEFINED BIT 1   
+Bit 6   --   USER DEFINED BIT 2
+Bit 7   --   USER DEFINED BIT 3
+Bit 8   --   USER DEFINED BIT 4
+Bit 10  --   FAULT SET IN THE CURRENT RUN
+Bit 11  --   FAULT SET AND CLEARED IN THE CURRENT RUN
+Bit 12  --   FAULT SET ATLEAST ONCE (STORED IN EEPROM)
+Bit 13  --   FAULT CODE SEVERITY NUMBER BIT0
+Bit 14  --   FAULT CODE SEVERITY NUMBER BIT1
+Bit 15  --   FAULT CODE SEVERITY NUMBER BIT2
+
+*/
+static unsigned int FC_JOINTMOTOR_2;
+static unsigned int FC_JOINTMOTOR_3;
+static unsigned int FC_JOINTMOTOR_4;
+static unsigned int FC_JOINTMOTOR_5;
+
+
 namespace YOUBOTPYTHON{
 using namespace boost::python;
+
+/*template <class T>
+	explicit object(T const& x);*/
 
 /* To Extract Array from Python Object */
 template <typename T>
@@ -86,7 +120,10 @@ template <typename T>
       		boost::python::numeric::array arr( handle );
 		return arr.copy();
   	};
-}/*End of Namespace YOUBOTPYTHON*/
 
+	
+	//class PyRobotArm;
+}/*End of Namespace YOUBOTPYTHON*/
+#endif
 
 

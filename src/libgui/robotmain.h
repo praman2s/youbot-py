@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
-#include "../libbinding/binding.h"
 #include "ui_robotmain.h"
 
 namespace Ui {

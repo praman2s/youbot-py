@@ -29,12 +29,17 @@ except KeyError:
 
  
 setup(name="youbot",
+       version='0.1.0',
+       description='youbot-py',
+       author='Praveen Ramanujam',
+       author_email='ramanujam@locomotec.com',
+       url='http://praman2s.github.io/youbot-py/',
     ext_modules=[
  	
         Extension("youbot", ["src/libbinding/binding.cpp"],
         include_dirs=[YOUBOT_HOME,os.path.join(YOUBOT_HOME,'soem/src'),os.path.join(current_dir,'src/libbinding')],
 	runtime_library_dirs = [os.path.join(current_dir,'lib')],
-        libraries = ['YouBotDriver','boost_python'])
+        libraries = ['/usr/local/lib/YouBotDriver','boost_python'])
     ])
 
 #Causes error when trying to install. Have to deal with the name of the folder

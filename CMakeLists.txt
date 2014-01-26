@@ -16,7 +16,7 @@ SET(YOUBOT_PATH $ENV{YOUBOT_HOME})
 # 				Required common packages                     #
 ##############################################################################
 
-FIND_PACKAGE( Boost 1.47 EXACT COMPONENTS  system serialization thread REQUIRED )
+FIND_PACKAGE( Boost COMPONENTS  system serialization thread REQUIRED )
 IF(Boost_FOUND)
   MESSAGE(STATUS "Boost library found at first attempt.")
 ELSE(Boost_FOUND)
@@ -74,6 +74,7 @@ IF(YOUBOT_GUI)
   
   ADD_SUBDIRECTORY (src/libgui)
   ADD_SUBDIRECTORY (src/libbinding)
+  #ADD_SUBDIRECTORY (src/libvisualizer)
   #FILE( GLOB RES_FILES *.rc )
   #QT4_WRAP_CPP( QT_MOC_SRC application.h )
   
