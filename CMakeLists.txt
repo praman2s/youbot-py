@@ -68,7 +68,8 @@ IF(YOUBOT_GUI)
   ENDIF( SOQT_LIBRARY_FOUND )
 
   INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR} 
-                       ${Boost_INCLUDE_DIRS})
+                       ${Boost_INCLUDE_DIRS}
+		       $ENV{YOUBOT_HOME})
                        
   LINK_DIRECTORIES(${Boost_LIBRARY_DIRS} )
   

@@ -36,10 +36,14 @@ setup(name="youbot",
        url='http://praman2s.github.io/youbot-py/',
     ext_modules=[
  	
-        Extension("youbot", ["src/libbinding/binding.cpp"],
-        include_dirs=[YOUBOT_HOME,os.path.join(YOUBOT_HOME,'soem/src'),os.path.join(current_dir,'src/libbinding')],
+        Extension("youbot", ["src/libbinding/binding.cpp"],	
+        include_dirs=[YOUBOT_HOME,os.path.join(YOUBOT_HOME,'soem/src'),os.path.join(current_dir,'src/libbinding'),'/usr/local/lib/'],
 	runtime_library_dirs = [os.path.join(current_dir,'lib')],
+<<<<<<< HEAD
         libraries = ['/usr/local/lib/YouBotDriver','boost_python'])
+=======
+        libraries = ['boost_python','/usr/local/lib/YouBotDriver'])
+>>>>>>> f8da8a72dd762f839d962f629ea1198efb3af64e
     ])
 
 #Causes error when trying to install. Have to deal with the name of the folder

@@ -120,6 +120,7 @@ bool Arm::Reset(){
 	youBotArm->setJointData(jointSetAngle);
 	SLEEP_SEC(5);
 	return true;
+
 }
 
 bool Arm::EnableTorqueMode(){
@@ -183,6 +184,7 @@ bool Arm::SetJointTorqueValues(const object& o){
 
 
 bool Arm::SetJointValues(const object& o){
+
 	invalidate_calib = 1;
 	youbot::JointSensedAngle angle;
 	std::vector<double> JointAngles;
@@ -209,6 +211,7 @@ BOOST_PYTHON_MODULE(youbot)
     numeric::array::set_module_and_type("numpy", "ndarray"); 
     import_array();
     class_<YOUBOTPYTHON::Arm, boost::noncopyable>("arm",init<>())
+
 	.def("CalibrateStandard", &Arm::startcalib)
 	.def("CalibrateHome", &Arm::startcalibHome)
 	.def("GetJointValues", &Arm::GetJointValues)
