@@ -67,6 +67,49 @@ bool Base::setVelocity(const object& o){
 	return true;
 }
 
+object Base::Odometry(){
+	
+	std::vector<double> odom;
+	odom.resize(3);
+	quantity<si::length> longitudinalPosition;
+	quantity<si::length> transversalPosition;
+	quantity<plane_angle> orientation;
+	this->youBotBase->getBasePosition(longitudinalPosition,transversalPosition,orientation);
+	odom[0] = longitudinalPosition.value();
+	odom[1] = transversalPosition.value();
+	odom[2] = orientation.value();
+	return PyArray(odom);
+
+	
+}
+
+object Base::getVelocity(){
+	
+	std::vector<double> vel;
+	vel.resize(3);
+	quantity<si::velocity> longitudinalVelocity; 
+	quantity<si::velocity> transversalVelocity; 
+	quantity<si::angular_velocity> angularVelocity;
+	this->youBotBase->getBaseVelocity(longitudinalVelocity,transversalVelocity,angularVelocity);
+	vel[0] = longitudinalVelocity.value();
+	vel[1] = transversalVelocity.value();
+	vel[2] = angularVelocity.value();
+	return PyArray(vel);
+
+}
+
+object Base::getJointTorques(){
+	
+	youbot::JointSensedTorque torque;
+	std::vector<double> JointTorques;
+	for(std::size_t i=0;i<4;i++){
+		this->youBotBase->getBaseJoint(i+1).getData(torque);
+		JointTorques[i] = (double)torque.torque.value();
+	}
+	return PyArray(JointTorques);
+
+}
+
 bool Base::setTorque(const object& o){
 
 	std::vector<double> JointTorques;
@@ -267,8 +310,11 @@ BOOST_PYTHON_MODULE(youbot)
 
     class_<YOUBOTPYTHON::Base, boost::noncopyable>("base",init<>())
 	
-	.def("cmd_vel", &Base::setVelocity)
-	.def("cmd_torque", &Base::setTorque);
+	.def("SetVelocity", &Base::setVelocity)
+	.def("SetTorque", &Base::setTorque)
+	.def("GetOdometry", &Base::Odometry)
+	.def("GetTorque", &Base::getJointTorques)
+	.def("GetVelocity", &Base::getVelocity);
 	
 	
 }

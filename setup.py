@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """ 
-.. examplepre-block:: python setup.py build --build-base=.
+.. examplepre-block:: python setup.py build 
 
 Description
 -----------
@@ -44,4 +44,4 @@ setup(name="youbot",
     ])
 
 #Causes error when trying to install. Have to deal with the name of the folder
-#shutil.move('lib.linux-x86_64-2.7','lab')
+#shutil.move('lib.linux-x86_64-2.7','lib')
