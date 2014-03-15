@@ -86,12 +86,12 @@ Bit 13  --   FAULT CODE SEVERITY NUMBER BIT0
 Bit 14  --   FAULT CODE SEVERITY NUMBER BIT1
 Bit 15  --   FAULT CODE SEVERITY NUMBER BIT2
 
-*/
+
 static unsigned int FC_JOINTMOTOR_2;
 static unsigned int FC_JOINTMOTOR_3;
 static unsigned int FC_JOINTMOTOR_4;
 static unsigned int FC_JOINTMOTOR_5;
-
+*/
 
 namespace YOUBOTPYTHON{
 using namespace boost::python;

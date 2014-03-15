@@ -205,7 +205,7 @@ Arm::~Arm() {
 
 }
 
-BOOST_PYTHON_MODULE(youbot)
+/*BOOST_PYTHON_MODULE(youbot)
 {
     using namespace boost::python;
     numeric::array::set_module_and_type("numpy", "ndarray"); 
@@ -223,6 +223,6 @@ BOOST_PYTHON_MODULE(youbot)
     class_<Robot, boost::noncopyable>("robot",init<>());
 	
 	
-}
+}*/
 
 } /* namespace YOUBOTPY */
