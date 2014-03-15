@@ -64,9 +64,12 @@ public:
 class Base{
 
 public:
-	Base(){};
+	Base();
 	bool startcalib(){};
-	bool setVelocity(){};
+	bool setTorque(const object& o);
+	bool setVelocity(const object& o);
+	youbot::YouBotBase *youBotBase;  
+	virtual ~Base();
 };
 
 

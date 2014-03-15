@@ -40,6 +40,50 @@
 namespace YOUBOTPYTHON{
 using namespace boost::python;
 
+Base::Base(){
+	this->youBotBase = new youbot::YouBotBase("youbot-base");
+	this->youBotBase->doJointCommutation();
+
+}
+
+
+Base::~Base() {
+	
+
+}
+
+bool Base::setVelocity(const object& o){
+	
+	std::vector<double> BaseVelocity;	
+	quantity<si::velocity> velx,vely;
+	quantity<si::angular_velocity> omega;
+	BaseVelocity.resize(3);
+	
+	velx = BaseVelocity[0]*meters_per_second;
+	vely = BaseVelocity[1]*meters_per_second;
+	omega = BaseVelocity[2]*radians_per_second;
+	
+	this->youBotBase->setBaseVelocity(velx,vely,omega);
+	return true;
+}
+
+bool Base::setTorque(const object& o){
+
+	std::vector<double> JointTorques;
+	JointTorques.resize(4);
+	JointTorques = ExtractArray<double>(o);
+	std::vector<youbot::JointTorqueSetpoint> jointSetTorque;
+	jointSetTorque.resize(4);
+	for(std::size_t i=0;i<4;i++){
+		jointSetTorque[i].torque = JointTorques[i]*newton_meter;
+	}
+	this->youBotBase->setJointData(jointSetTorque);
+
+	return true;
+
+
+}
+
 Arm::Arm() {
 
 	this->youBotArm = new youbot::YouBotManipulator("youbot-manipulator");
@@ -220,7 +264,11 @@ BOOST_PYTHON_MODULE(youbot)
 	.def("SetJointTorqueValues", &Arm::SetJointTorqueValues)
 	.def("EnableTorqueMode", &Arm::EnableTorqueMode)
         .def("Reset", &Arm::Reset);
-    //class_<Robot, boost::noncopyable>("robot",init<>());
+
+    class_<YOUBOTPYTHON::Base, boost::noncopyable>("base",init<>())
+	
+	.def("cmd_vel", &Base::setVelocity)
+	.def("cmd_torque", &Base::setTorque);
 	
 	
 }
