@@ -6,8 +6,8 @@
 youBot-py (Under Development)
 ===========================================================
 
-* **The first stable release 0.1.0 was made available on 19.01.2014**
-* **The next stable release 0.2.0 will be made available on 30.01.2014**
+* **First stable release : 19.03.2014**
+
 
 For the changes happening, refer to :ref:`changelog`
 
@@ -27,21 +27,6 @@ This wrapper is intended as python library for youbot :
 .. toctree::
    :maxdepth: 3
 
-Major Releases
-*******************
-
-The major releases does not include or plan for bug fixes.
-The bug fix release will happen as soon as a bug is found
-
-==================   ================    ==================
-Month-year             Release             Functions
-==================   ================    ==================
-Jan19-2014            V0.1                Support for Arm
-Jan30-2014            V0.2                Support for Base
-Feb15-2014            V0.3                Whole Body Support (FSM support)
-Feb28-2014            V1.0                Final Release with maintanence 
-==================   ================    ==================
-	
 
 Installation
 ==================
@@ -72,11 +57,7 @@ The whole wrapper is divided into three parts:
 
 Communication with youbot
 *********************************
-This sets up the communication between PC and youBot ethercat drivers::
-
-	from youbotpy import *     # Imports all the modules that are being exposed
-	robot = robot()            # Tries to establish connection, if not throws exception
-	robot.Calibrate()          # Optional. For some users who want candle positon as initial pose.
+Communication with youbot is performed interms of youBot base and arm.
 
            
 
