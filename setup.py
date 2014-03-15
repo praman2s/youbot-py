@@ -6,7 +6,7 @@
 Description
 -----------
 To build use as the following
-python setup.py build --build-base=.
+python setup.py build 
 
 To install
 python setup.py install
