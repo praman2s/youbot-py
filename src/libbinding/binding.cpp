@@ -205,7 +205,7 @@ Arm::~Arm() {
 
 }
 
-/*BOOST_PYTHON_MODULE(youbot)
+BOOST_PYTHON_MODULE(youbot)
 {
     using namespace boost::python;
     numeric::array::set_module_and_type("numpy", "ndarray"); 
@@ -220,9 +220,8 @@ Arm::~Arm() {
 	.def("SetJointTorqueValues", &Arm::SetJointTorqueValues)
 	.def("EnableTorqueMode", &Arm::EnableTorqueMode)
         .def("Reset", &Arm::Reset);
-    class_<Robot, boost::noncopyable>("robot",init<>());
+    //class_<Robot, boost::noncopyable>("robot",init<>());
 	
 	
-}*/
-
+}
 } /* namespace YOUBOTPY */
