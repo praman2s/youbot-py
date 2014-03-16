@@ -69,6 +69,7 @@ public:
 	bool setTorque(const object& o);
 	bool setVelocity(const object& o);
 	object Odometry();
+	bool setRelativePose(const object& o);
 	object getJointTorques();
 	object getVelocity();
 	youbot::YouBotBase *youBotBase;  

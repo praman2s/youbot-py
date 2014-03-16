@@ -46,7 +46,6 @@ Base::Base(){
 
 }
 
-
 Base::~Base() {
 	
 
@@ -54,7 +53,8 @@ Base::~Base() {
 
 bool Base::setVelocity(const object& o){
 	
-	std::vector<double> BaseVelocity;	
+	std::vector<double> BaseVelocity;
+	BaseVelocity = ExtractArray<double>(o);	
 	quantity<si::velocity> velx,vely;
 	quantity<si::angular_velocity> omega;
 	BaseVelocity.resize(3);
@@ -78,10 +78,16 @@ object Base::Odometry(){
 	odom[0] = longitudinalPosition.value();
 	odom[1] = transversalPosition.value();
 	odom[2] = orientation.value();
-	return PyArray(odom);
+ 	return PyArray(odom);
 
 	
 }
+bool Base::setRelativePose(const object& o){
+	
+	return false;
+}
+
+
 
 object Base::getVelocity(){
 	
@@ -312,7 +318,8 @@ BOOST_PYTHON_MODULE(youbot)
 	
 	.def("SetVelocity", &Base::setVelocity)
 	.def("SetTorque", &Base::setTorque)
-	.def("GetOdometry", &Base::Odometry)
+	.def("GetPose", &Base::Odometry)
+	.def("SetRelativePose", &Base::setRelativePose)
 	.def("GetTorque", &Base::getJointTorques)
 	.def("GetVelocity", &Base::getVelocity);
 	
