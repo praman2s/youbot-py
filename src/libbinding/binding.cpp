@@ -83,8 +83,17 @@ object Base::Odometry(){
 	
 }
 bool Base::setRelativePose(const object& o){
+
+	std::vector<double> pose = ExtractArray<double>(o);		
+	quantity<si::length> longitudinalPosition;
+	quantity<si::length> transversalPosition;
+	quantity<plane_angle> orientation;	
+	longitudinalPosition = pose[0]*meters;
+	transversalPosition = pose[1]*meters;
+	orientation = pose[2]*radians;
+	this->youBotBase->setBasePosition(longitudinalPosition, transversalPosition, orientation);
 	
-	return false;
+	return true;
 }
 
 
