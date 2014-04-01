@@ -56,7 +56,9 @@ public:
 	object GetJointValues();
 	object GetJointTorqueValues();
 	bool SetJointTorqueValues(const object& o);
-	youbot::YouBotManipulator *youBotArm;  
+	youbot::YouBotManipulator *youBotArm; 
+	void GripperOpen(){this->youBotArm->getArmGripper().open();};
+	void GripperClose(){this->youBotArm->getArmGripper().close();};
 	virtual ~Arm();
 
 };
@@ -75,6 +77,7 @@ public:
 	object getJointTorques();
 	object getVelocity();
 	youbot::YouBotBase *youBotBase;  
+	
 	virtual ~Base();
 };
 

@@ -353,7 +353,9 @@ BOOST_PYTHON_MODULE(youbot)
 	.def("GetJointTorqueValues", &Arm::GetJointTorqueValues)
 	.def("SetJointTorqueValues", &Arm::SetJointTorqueValues)
 	.def("EnableTorqueMode", &Arm::EnableTorqueMode)
-        .def("Reset", &Arm::Reset);
+	.def("GripperOpen", &Arm::GripperOpen)
+	.def("GripperClose", &Arm::GripperClose)
+	.def("Reset", &Arm::Reset);
 
     class_<YOUBOTPYTHON::Base, boost::noncopyable>("base",init<>())
 	
