@@ -147,6 +147,8 @@ Arm::Arm() {
 	this->youBotArm = new youbot::YouBotManipulator("youbot-manipulator");
 	this->youBotArm->doJointCommutation();
 	this->youBotArm->calibrateManipulator();
+	this->youBotArm->calibrateGripper();
+
 	calib = 0;
 	invalidate_calib = 0;
 }
@@ -321,7 +323,9 @@ BOOST_PYTHON_MODULE(youbot)
 	.def("GetJointTorqueValues", &Arm::GetJointTorqueValues)
 	.def("SetJointTorqueValues", &Arm::SetJointTorqueValues)
 	.def("EnableTorqueMode", &Arm::EnableTorqueMode)
-        .def("Reset", &Arm::Reset);
+	.def("GripperOpen", &Arm::GripperOpen)
+	.def("GripperClose", &Arm::GripperClose)
+	.def("Reset", &Arm::Reset);
 
     class_<YOUBOTPYTHON::Base, boost::noncopyable>("base",init<>())
 	
