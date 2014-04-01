@@ -82,6 +82,36 @@ object Base::Odometry(){
 
 	
 }
+
+bool Base::setWheelVelocities(const object& o){
+	
+	std::vector<double> JointVel;
+	JointVel.resize(4);
+	JointVel = ExtractArray<double>(o);
+	std::vector<youbot::JointVelocitySetpoint> jointSetVel;
+	jointSetVel.resize(4);
+	for(std::size_t i=0;i<4;i++){
+		jointSetVel[i].angularVelocity = JointVel[i]*radians_per_second;
+	}
+	this->youBotBase->setJointData(jointSetVel);
+
+	
+	return true;
+}
+
+object Base::getWheelVelocities(){
+
+	youbot::JointSensedVelocity vel;
+	std::vector<double> JointVelocities;
+	JointVelocities.resize(4);
+	for(std::size_t i=0;i<3;i++){
+		this->youBotBase->getBaseJoint(i+1).getData(vel);
+		JointVelocities[i] = (double)vel.angularVelocity.value();
+	}
+	return PyArray(JointVelocities);
+	
+}
+
 bool Base::setRelativePose(const object& o){
 
 	std::vector<double> pose = ExtractArray<double>(o);		
@@ -117,7 +147,8 @@ object Base::getJointTorques(){
 	
 	youbot::JointSensedTorque torque;
 	std::vector<double> JointTorques;
-	for(std::size_t i=0;i<4;i++){
+	JointTorques.resize(4);
+	for(std::size_t i=0;i<3;i++){
 		this->youBotBase->getBaseJoint(i+1).getData(torque);
 		JointTorques[i] = (double)torque.torque.value();
 	}
@@ -147,6 +178,7 @@ Arm::Arm() {
 	this->youBotArm = new youbot::YouBotManipulator("youbot-manipulator");
 	this->youBotArm->doJointCommutation();
 	this->youBotArm->calibrateManipulator();
+	this->youBotArm->calibrateGripper();
 	calib = 0;
 	invalidate_calib = 0;
 }
@@ -326,10 +358,12 @@ BOOST_PYTHON_MODULE(youbot)
     class_<YOUBOTPYTHON::Base, boost::noncopyable>("base",init<>())
 	
 	.def("SetVelocity", &Base::setVelocity)
-	.def("SetTorque", &Base::setTorque)
+	.def("GetWheelVelocities", &Base::getWheelVelocities)
+	.def("SetWheelVelocities", &Base::setWheelVelocities)
+	.def("SetWheelTorques", &Base::setTorque)
+	.def("GetWheelTorques", &Base::getJointTorques)
 	.def("GetPose", &Base::Odometry)
 	.def("SetRelativePose", &Base::setRelativePose)
-	.def("GetTorque", &Base::getJointTorques)
 	.def("GetVelocity", &Base::getVelocity);
 	
 	

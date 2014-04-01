@@ -14,13 +14,18 @@ velocity for 0.1m/s in x direction for 5 seconds
 """
 
 from youbot import *   #exposes youbot_driver to python
+from pylab import *
 import time
 
 robot = base()    # Calls the constructor . Important to call at the begining
 current = time.time()
 
-while (time.time()-current < 5):
+while (time.time()-current < 1):
 	robot.SetVelocity([-0.2,0,0]) #Sets the base velocity to x - 0.1 for 5 seconds
+	vel = robot.GetVelocity();
+	torque = robot.GetTorque();
+	print torque
+	print vel
 
 print "End of Hello World..!!!"
 
