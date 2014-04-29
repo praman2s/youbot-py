@@ -148,7 +148,7 @@ object Base::getJointTorques(){
 	youbot::JointSensedTorque torque;
 	std::vector<double> JointTorques;
 	JointTorques.resize(4);
-	for(std::size_t i=0;i<3;i++){
+	for(std::size_t i=0;i<4;i++){
 		this->youBotBase->getBaseJoint(i+1).getData(torque);
 		JointTorques[i] = (double)torque.torque.value();
 	}
@@ -290,6 +290,7 @@ object Arm::GetJointTorqueValues(){
 
 	youbot::JointSensedTorque torque;
 	std::vector<double> JointTorques;
+	JointTorques.resize(5);
 	for(std::size_t i=0;i<5;i++){
 		this->youBotArm->getArmJoint(i+1).getData(torque);
 		JointTorques[i] = (double)torque.torque.value();
