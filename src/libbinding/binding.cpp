@@ -104,7 +104,7 @@ object Base::getWheelVelocities(){
 	youbot::JointSensedVelocity vel;
 	std::vector<double> JointVelocities;
 	JointVelocities.resize(4);
-	for(std::size_t i=0;i<3;i++){
+	for(std::size_t i=0;i<4;i++){
 		this->youBotBase->getBaseJoint(i+1).getData(vel);
 		JointVelocities[i] = (double)vel.angularVelocity.value();
 	}
@@ -146,15 +146,33 @@ object Base::getVelocity(){
 object Base::getJointTorques(){
 	
 	youbot::JointSensedTorque torque;
+	//boost::units::quantity<boost::units::si::electric_potential> parameter;
+	youbot::ActualMotorVoltage parameter;
 	std::vector<double> JointTorques;
+	
 	JointTorques.resize(4);
 	for(std::size_t i=0;i<4;i++){
 		this->youBotBase->getBaseJoint(i+1).getData(torque);
+		this->youBotBase->getBaseJoint(i+1). getConfigurationParameter(parameter);
 		JointTorques[i] = (double)torque.torque.value();
 	}
 	return PyArray(JointTorques);
 
 }
+
+object Base::getJointCurrents(){
+	
+	youbot::JointSensedCurrent current;
+	std::vector<double> JointCurrent;
+	JointCurrent.resize(4);
+	for(std::size_t i=0;i<4;i++){
+		this->youBotBase->getBaseJoint(i+1).getData(current);
+		JointCurrent[i] = (double)current.current.value();
+	}
+	return PyArray(JointCurrent);
+
+}
+
 
 bool Base::setTorque(const object& o){
 
@@ -170,6 +188,29 @@ bool Base::setTorque(const object& o){
 
 	return true;
 
+
+}
+object Base::ErrorStatus(){
+
+	youbot::ErrorAndStatus  status;
+	string::size_type k  = 0;
+	std::vector<double> wheelstatus;
+	std::string value,finalstatus;
+	wheelstatus.resize(4);
+	for(std::size_t i=0;i<4;i++){
+		this->youBotBase->getBaseJoint(i+1).getConfigurationParameter(status);
+		status.toString(value);
+		value.c_str();
+		for (string::size_type j = 16; j < value.length(); j++){
+			finalstatus[k] = value[j];
+			std::cout << value[j] << std::endl;
+			k++;
+		}
+			
+		std::cout << finalstatus << std::endl;
+	}
+	
+        return PyArray(wheelstatus);
 
 }
 
@@ -365,7 +406,9 @@ BOOST_PYTHON_MODULE(youbot)
 	.def("SetWheelVelocities", &Base::setWheelVelocities)
 	.def("SetWheelTorques", &Base::setTorque)
 	.def("GetWheelTorques", &Base::getJointTorques)
-	.def("GetPose", &Base::Odometry)
+	.def("GetWheelCurrents", &Base::getJointCurrents)
+	.def("GetPose", &Base::Odometry) 
+	.def("GetDFC", &Base::ErrorStatus)
 	.def("SetRelativePose", &Base::setRelativePose)
 	.def("GetVelocity", &Base::getVelocity);
 	

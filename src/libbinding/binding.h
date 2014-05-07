@@ -36,6 +36,9 @@
 
 #include <youbot/YouBotBase.hpp>
 #include <youbot/YouBotManipulator.hpp>
+#include <youbot/YouBotJointParameterReadOnly.hpp>
+
+#include <sstream>
 #include "youbot_int.h"
 
 namespace YOUBOTPYTHON{
@@ -75,7 +78,9 @@ public:
 	object getWheelVelocities();
 	bool setWheelVelocities(const object& o);
 	object getJointTorques();
+	object getJointCurrents();
 	object getVelocity();
+	object ErrorStatus();
 	youbot::YouBotBase *youBotBase;  
 	
 	virtual ~Base();
