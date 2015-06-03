@@ -8,7 +8,7 @@ youBot-py (Under Development)
 
 * **The first stable release 0.1.0 - Support for Arm**
 
-.. codeblock::python
+.. code-block::python
 
    1 .cd $HOME  (or your favourite directory)
    2. git clone https://github.com/praman2s/youbot-py
