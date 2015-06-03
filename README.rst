@@ -8,6 +8,8 @@ youBot-py (Under Development)
 
 * **The first stable release 0.1.0 - Support for Arm**
 
+.. codeblock::python
+
    1 .cd $HOME  (or your favourite directory)
    2. git clone https://github.com/praman2s/youbot-py
    3 . sudo apt-get install git git-core cmake libboost-all-dev python-dev python-numpy xdotool qt-sdk libxml2-dev libboost-thread-dev libboost-date-time-dev libboost-filesystem-dev libboost-system-dev libboost-regex-dev
